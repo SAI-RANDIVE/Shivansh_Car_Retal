@@ -1,111 +1,119 @@
 # Shivansh Self Drive
 
-Premium self-drive car rental website for Pune, built with React and Vite.
+Modern self-drive car rental web application for Pune with premium UI, quotation generation, and WhatsApp-first booking communication.
 
-## Features
+## Overview
 
-- Fleet listing with car cards and image fallbacks
-- Animated action icons for booking, contact, and map links
-- Booking flow with modal, digital signatures, and terms acceptance
-- Quotation PDF generation with logo, payment QR code, English terms, and signatures
-- WhatsApp sharing flow for booking requests
-- Polished English terms and conditions
-- Responsive layout for desktop and mobile
+Shivansh Self Drive is built as a performance-focused single-page application using React + Vite. It combines a visually rich fleet discovery experience with an operational booking workflow that captures customer intent, validates rental constraints, and produces a ready-to-share PDF quotation.
 
-## Tech Stack
+The product emphasizes:
 
-- React 18
-- Vite
-- Framer Motion
-- jsPDF
+- Fast browsing and mobile responsiveness
+- Transparent pricing display
+- Minimal-friction customer booking flow
+- Strong brand presentation
+- Practical operations tooling (PDF + WhatsApp handoff)
 
-## Project Structure
+## Core Capabilities
+
+- Premium fleet listing with filter chips and category segmentation
+- Car cards with image fallback behavior and quick booking CTA
+- Booking modal with:
+  - Pickup/dropoff selection
+  - Customer details validation
+  - Terms acceptance controls
+  - Dual signature capture
+- Automated quotation PDF generation with:
+  - Brand logo
+  - Payment QR
+  - Booking details summary
+  - Terms and customer signatures
+- WhatsApp booking handoff with generated quotation support
+- SEO/hosting-friendly static files (`robots.txt`, `sitemap.xml`, `_headers`, `.htaccess`)
+
+## Technical Architecture
+
+- Frontend framework: React 18
+- Build tool: Vite 5
+- Animation layer: Framer Motion
+- Document generation: jsPDF
+- Static asset strategy: Public folder serving via Vite
+
+### Application Layers
+
+- Presentation: `src/styles.css` (theme, layout, responsive behavior)
+- View/Flow orchestration: `src/App.jsx`
+- Data/config: `src/data/cars.js`
+- Path helpers/utilities: `src/utils/paths.js`
+
+## Repository Structure
 
 ```text
 ShivanshSelfDrive/
-  README.md
+  docs/                         # Project/deployment documentation
+  public/
+    assets/img/                 # Brand assets
+    cars/                       # Vehicle images grouped by model folder
+    media/                      # Icons, backgrounds, payment media
+  src/
+    data/                       # Fleet metadata and terms
+    utils/                      # Utility/path helpers
+    App.jsx                     # Primary UI + booking logic
+    main.jsx                    # Application entrypoint
+    styles.css                  # Styling system
   index.html
   package.json
   vite.config.js
-  public/
-    assets/
-      img/
-        logo.jpeg
-    media/
-      backgrounds/
-        13820721_3840_2160_30fps.mp4
-        6872095-uhd_3840_2160_25fps.mp4
-      icons/
-        booking.mp4
-        contact.mp4
-        map.mp4
-      payment/
-        PaymentQR.jpeg
-    cars/
-      ...car folders with images and main-photo.png
-  src/
-    App.jsx
-    main.jsx
-    styles.css
-    data/
-      cars.js
-    utils/
-      paths.js
-  docs/
-    HOSTINGER_DEPLOYMENT.md
-    PROJECT_STRUCTURE.md
+  robots.txt
+  sitemap.xml
+  _headers
+  .htaccess
 ```
+
+## Booking Workflow (High Level)
+
+1. Customer selects a vehicle from Fleet.
+2. Booking modal collects schedule and customer identity.
+3. Terms consent and signatures are captured.
+4. Quotation PDF is generated from booking payload.
+5. Booking message is prepared for WhatsApp submission.
+6. Customer shares/attaches generated quote with operations contact.
 
 ## Local Development
 
-1. Install dependencies:
-
 ```bash
 npm install
-```
-
-2. Start the dev server:
-
-```bash
 npm run dev
 ```
 
-3. Build for production:
+### Production Build
 
 ```bash
 npm run build
-```
-
-4. Preview the production build:
-
-```bash
 npm run preview
 ```
 
-## Booking Flow
-
-- Select a car from the fleet.
-- The booking modal opens with booking details, terms, and signature capture.
-- The quotation PDF is generated with the company logo, payment QR code, polished English terms, and signatures at the bottom.
-- The PDF file name uses the customer name.
-- WhatsApp sharing is triggered with the booking message.
-
-## Contact
-
-The site includes a dedicated contact section for Sai Randive:
-
-- Sai Randive (Pune)
-- 9175799251
-- sai.randive.btech2024@sitpune.edu.in
-
 ## Deployment Notes
 
-- Keep the assets inside `public/` so Vite serves them correctly.
-- The animated icons and background videos live under `public/media/`.
-- Each car folder should contain a `main-photo.png` file for the primary image fallback.
-- Review `docs/HOSTINGER_DEPLOYMENT.md` before hosting.
+- Keep all static assets under `public/`.
+- Ensure each car folder has a `main-photo.png` for reliable primary rendering.
+- Use `docs/HOSTINGER_DEPLOYMENT.md` for hosting-specific guidance.
+- Keep `_headers` and `.htaccess` aligned with hosting/CDN behavior.
+
+## Operations Notes
+
+- Pricing and terms content are managed in source data files and rendered in booking/PDF workflows.
+- PDF generation depends on asset availability (logo and payment QR paths).
+- WhatsApp flow uses prefilled messaging and may fall back to download-first sharing on unsupported share targets.
+
+## Roadmap Ideas
+
+- Backend booking persistence and admin dashboard
+- Availability calendar and booking conflict checks
+- Payment status integration
+- Multilingual content and policy management via CMS
+- Automated tests for booking and PDF generation paths
 
 ## License
 
-This project is intended for the Shivansh Self Drive website.
-"# Shivansh_Car_Retal"  
+Private project for Shivansh Self Drive operations and branding.
